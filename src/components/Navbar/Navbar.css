@@ -4,7 +4,6 @@
     background-color: rgb(243, 223, 226);
     margin-top: 15px;
     border: 20px;
-   
     display: flex;
 }
 .let-mine{
@@ -12,6 +11,7 @@
   font-size: 1000px;
   font-weight: 900;
   margin: 20px;
+ 
 }
 .est-mine{
   align-items: center;
