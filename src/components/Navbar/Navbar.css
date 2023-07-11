@@ -1,0 +1,28 @@
+.container-fluid{
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    background-color: rgb(243, 223, 226);
+    margin-top: 15px;
+    border: 20px;
+   
+    display: flex;
+}
+.let-mine{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1000px;
+  font-weight: 900;
+  margin: 20px;
+}
+.est-mine{
+  align-items: center;
+  display: flex;
+}
+.number{
+ font-size: 20px;
+ margin: 10px;
+ display: flex;
+}
+.tit-mine{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 20px;
+}
