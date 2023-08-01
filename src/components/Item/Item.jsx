@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-bootstrap-icons';
 
 export const Item = ({producto}) => {
-  return (
+  return ( <div>
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={producto.imag} />
       <Card.Body>
@@ -21,5 +21,6 @@ export const Item = ({producto}) => {
         <Button as={Link} to={`/item/${producto.id}`} variant="primary">Ver mas</Button>
       </Card.Body>
     </Card>
+    </div>
   );
 }

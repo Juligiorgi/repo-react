@@ -11,12 +11,13 @@ export const ItemDetailContainer = () => {
   useEffect(()=>{
     getItem(id)
     .then((res)=> setProductos(res))
-    .catch((error)=> console.log(error))
+    .catch((error)=> setProductos(error))
   },[id])
   return( 
-       <div>
-          <ItemDetail producto={producto}/>
-        </div>
+      <div>
+        <ItemDetail producto={producto}/>
+      </div>
+        
      )
 
 

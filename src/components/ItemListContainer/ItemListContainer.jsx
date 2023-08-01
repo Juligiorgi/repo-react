@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from "react";
 import { Title } from "../Title/Title";
 import{ItemList} from '../ItemList/ItemList'
-import ItemCount from "../ItemCount/ItemCount";
 import { useParams } from "react-router-dom";
 import { getProductos } from "../../data/data";
 
@@ -24,7 +23,6 @@ export const ItemListContainer = () =>{
  return(<div>  
             <Title greeting = "Bienvenido a Lemons"/>
             <ItemList productos={productos}/>
-            <ItemCount initial={1} stock={10} onAdd={onAdd}/>
             </div>
     )
 

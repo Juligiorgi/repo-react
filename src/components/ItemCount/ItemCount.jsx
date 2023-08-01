@@ -17,7 +17,7 @@ const ItemCount = ({stock, onAdd, initial}) => {
     return(
         <div className="d-flex flex-column align-items-start justify-content-between">
             <div>
-                <Button variant="dark"onClick={restar}>+</Button>
+            <Button variant="dark"onClick={restar}>+</Button>
                 <span className="btn">{count}</span>
                 <Button variant="dark" onClick={sumar}>-</Button>
             </div>

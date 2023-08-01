@@ -1,5 +1,5 @@
 import React from "react";
-
+import ItemCount from "../ItemCount/ItemCount";
 
 const ItemDetail = ({producto}) => {
     const onAdd = (cantidad) => {
@@ -11,7 +11,7 @@ const ItemDetail = ({producto}) => {
             <img src={producto.imag} alt={producto.name}></img>
             <p>{producto.descripcion}</p>
             <p>{producto.precio}</p>
-             
+            <ItemCount initial={1} stock={producto.stock} onAdd={onAdd}/> 
         </div>
     )
 }
