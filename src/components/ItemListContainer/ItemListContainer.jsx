@@ -1,24 +1,23 @@
 import React, { useEffect, useState} from "react";
 import { Title } from "../Title/Title";
-import{ItemList} from '../ItemList/ItemList'
+import {ItemList} from '../ItemList/ItemList';
 import { useParams } from "react-router-dom";
-import { getProductos } from "../../data/data";
+import {getProductos}  from "../../mock/data";
+import {getProductosCategoria} from "../../mock/data";
 
-export const ItemListContainer = () =>{
+ const ItemListContainer = () =>{
    const [productos, setProductos] =useState([])
-    const {categoriaId} = useParams()
-
-    useEffect(()=>{
-        getProductos()
-        .then((res)=> setProductos(res))
-        .catch((error)=> setProductos(error))
-    },[])
-    
-    const onAdd = (cantidad) =>{
-        console.log(`Compraste ${cantidad} productos`);
-      }
    
+   const {categoriaId} =useParams
     
+   useEffect(()=>{
+       if(categoriaId){
+        getProductosCategoria(categoriaId).then ((res)=> setProductos(res))
+       }
+       else{
+        getProductos().then((res)=>setProductos(res))
+       }
+   },[categoriaId])
     
  return(<div>  
             <Title greeting = "Bienvenido a Lemons"/>

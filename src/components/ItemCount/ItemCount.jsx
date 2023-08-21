@@ -1,27 +1,16 @@
-import React, { useState } from "react"
-import {Button} from 'react-bootstrap'
+import React, {useState}from 'react'
 
-const ItemCount = ({stock, onAdd, initial}) => {
-   const[count,setCount] = useState(initial)
-   const sumar = () =>{
-    if (count < stock){
-    setCount(count + 1)
-    }
-   }
-   const restar = () => {
-    if(count > 0 ){
-    setCount(count - 1)
-    }
-   }
+
+const ItemCount =({cantidad, handleRestar, handleSumar, handleAgregar}) => {
 
     return(
         <div className="d-flex flex-column align-items-start justify-content-between">
             <div>
-            <Button variant="dark"onClick={restar}>+</Button>
-                <span className="btn">{count}</span>
-                <Button variant="dark" onClick={sumar}>-</Button>
+            <button variant="dark"onClick={handleRestar}>-</button>
+                <p className="btn">{cantidad}</p>
+                <button variant="dark" onClick={handleSumar}>+</button>
             </div>
-            <Button className="mt-3" variant="dark" disabled={count === 0} onClick={()=>onAdd(count)}>Comprar</Button>
+            <button className="mt-3" variant="dark" onClick={handleAgregar}>Agregar al carrito</button>
         </div>
     )
 }
