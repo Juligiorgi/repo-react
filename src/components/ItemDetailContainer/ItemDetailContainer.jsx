@@ -1,18 +1,28 @@
 import React,{useEffect, useState} from "react";
-import {getItem} from "../../mock/data";
 import { useParams } from "react-router-dom";
 import ItemDetail from '../ItemDetail/ItemDetail';
-
+import {doc, getDocs} from "firebase/firestore";
+import { db } from "../../Firebase/config";
 
 export const ItemDetailContainer = () => {
-  const [producto, setProductos] =useState({})
-  const {id} = useParams()
+  const [producto, setItem] =useState({})
+  const {id} = useParams().id;
 
   useEffect(()=>{
-    getItem(id)
-    .then((res)=> setProductos(res))
-    .catch((error)=> setProductos(error))
+    const docRef = doc(db, "productos", id);
+    getDocs(docRef)
+    .then((resp) => {
+      setItem(
+        {...resp.metadata(), id: resp.id}
+      )
+    })
+
+
   },[id])
+  
+  
+  
+  
   return( 
       <div>
         <ItemDetail producto={producto}/>
