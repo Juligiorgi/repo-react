@@ -24,11 +24,11 @@ export const CartProvider = ({children}) => {
     }
 
     const cantidadEnCarrito = () => {
-        return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+        return carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     }
 
     const precioTotal = () => {
-        return carrito.reduce((acc, prod) => acc + prod.precio * prod.cantidad, 0);
+        return carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0);
     }
 
     const vaciarCarrito = () => {

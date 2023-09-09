@@ -1,10 +1,10 @@
-import React, {useState}from 'react'
+import React from 'react'
 
 
 const ItemCount =({cantidad, handleRestar, handleSumar, handleAgregar}) => {
 
     return(
-        <div className="d-flex flex-column align-items-start justify-content-between">
+        <div>
             <div>
             <button variant="dark"onClick={handleRestar}>-</button>
                 <p className="btn">{cantidad}</p>

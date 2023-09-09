@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {Container, Nav,NavDropdown} from 'react-bootstrap';
 import {Navbar} from 'react-bootstrap';
+import {CardWidget} from "../CardWidget/CardWidget"
 
 
 
@@ -12,8 +13,7 @@ export const NavBar = () =>{
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={NavLink}to='/Ropa'> Inicio </Nav.Link>
-            <Nav.Link as={NavLink} to= '/Carrito'>Carrito</Nav.Link>
+            <Nav.Link as={NavLink}to='/'> Inicio </Nav.Link>
             <NavDropdown title="Ropa" id="basic-nav-dropdown">
               <NavDropdown.Item as={NavLink} to='/categoria/Calzas'>Calzas</NavDropdown.Item>
               <NavDropdown.Item as={NavLink} to='/categoria/Tops'>Tops</NavDropdown.Item>
@@ -23,6 +23,7 @@ export const NavBar = () =>{
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <CardWidget/> 
     </Navbar>
   );
 }

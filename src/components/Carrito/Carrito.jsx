@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { CartContext } from '../context/CartContext'
+import { CartContext } from '../../CartContext/CartContext'
 import { NavLink } from 'react-router-dom';
 
-const Carrito = () => {
+export const Carrito = () => {
 
     const { carrito, precioTotal, vaciarCarrito } = useContext(CartContext);
 
@@ -15,13 +15,13 @@ const Carrito = () => {
         <h1 className="main-title">Carrito</h1>
 
         {
-            carrito.map((prod) => (
-                <div key={prod.id}>
+            carrito.map((producto) => (
+                <div key={producto.id}>
                     <br />
-                    <h3>{prod.titulo}</h3>
-                    <p>Precio unit: ${prod.precio}</p>
-                    <p>Precio total: ${prod.precio * prod.cantidad}</p>
-                    <p>Cant: {prod.cantidad}</p>
+                    <h3>{producto.titulo}</h3>
+                    <p>Precio unit: ${producto.precio}</p>
+                    <p>Precio total: ${producto.precio * producto.cantidad}</p>
+                    <p>Cant: {producto.cantidad}</p>
                     <br />
                 </div>
             ))
@@ -41,4 +41,3 @@ const Carrito = () => {
   )
 }
 
-export default Carrito

@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react'
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../../CartContext/CartContext';
 import { useForm } from 'react-hook-form';
-import { collection, addDoc } from "firebase/firestore";
-import { db } from '../firebase/config';
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 
-const Checkout = () => {
+export const Checkout = () => {
 
     
     const [pedidoId, setPedidoId] = useState("");
@@ -20,6 +19,8 @@ const Checkout = () => {
             total: precioTotal()
         }
         console.log(pedido);
+
+        const db = getFirestore();
 
         const pedidosRef = collection(db, "pedidos");
 
@@ -56,4 +57,3 @@ const Checkout = () => {
   )
 }
 
-export default Checkout

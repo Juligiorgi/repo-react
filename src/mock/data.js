@@ -108,10 +108,10 @@ const list= [
      })
     }
     
-    export const getProductosCategoria = (Categoria) =>{
+    export const getProductosCategoria = (categoria) =>{
         return new Promise ((res)=>{
             const productos = list.filter(
-                (producto)=> producto.Categoria === Categoria
+                (producto)=> producto.categoria === categoria
             );
             setTimeout(()=>{
                 res(productos);

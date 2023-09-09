@@ -1,11 +1,10 @@
 import ItemCount from "../ItemCount/ItemCount";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import {CartContext} from '../../CartContext/CartContext'
 
 
 
-
-const ItemDetail = ({item}) => {
+const ItemDetail = ({producto}) => {
 
     const {carrito, agregarAlCarrito} = useContext(CartContext);
     console.log(carrito);
@@ -17,7 +16,7 @@ const ItemDetail = ({item}) => {
     }
     
     const handleSumar = () => {
-        cantidad < item.stock && setCantidad(cantidad + 1)
+        cantidad <producto.stock && setCantidad(cantidad + 1)
     }
 
 
@@ -25,12 +24,12 @@ const ItemDetail = ({item}) => {
     
         return (
             <div className="d-flex flex-column align-items-center">
-                <h3>Detalle de: {item.name}</h3>
-                <img src={item.imag} alt={item.name}></img>
-                <p>{item.descripcion}</p>
-                <p>{item.precio}</p>
+                <h3>Detalle de: {producto.name}</h3>
+                <img src={producto.imag} alt={producto.name}></img>
+                <p>{producto.descripcion}</p>
+                <p>{producto.precio}</p>
     
-                <ItemCount cantidad={cantidad} handleSumar={handleSumar} handleRestar={handleRestar} handleAgregar={()=>{agregarAlCarrito(item,cantidad)}}/> 
+                <ItemCount cantidad={cantidad} handleSumar={handleSumar} handleRestar={handleRestar} handleAgregar={()=>{agregarAlCarrito(producto,cantidad)}}/> 
             </div>
         )
 

@@ -10,7 +10,7 @@ export const ItemList =({productos, name}) =>{
                 {(name)}
             </h2>
               <div className='d-flex justify-content-around align-items-center flex-wrap'>
-                  {productos.map((prod)=> <Item producto={prod} key={prod.id}/>)}
+                  {productos.map((producto)=> <Item producto={producto} key={productos.id}/>)}
                </div>
         </div>
        

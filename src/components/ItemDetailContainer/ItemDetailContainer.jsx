@@ -1,27 +1,23 @@
-import React,{useEffect, useState} from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from '../ItemDetail/ItemDetail';
-import {doc, getDocs} from "firebase/firestore";
-import { db } from "../../Firebase/config";
+import useGetDocumentById from "../../hook/useGetDocumentById";
 
 export const ItemDetailContainer = () => {
-  const [producto, setItem] =useState({})
-  const {id} = useParams().id;
-
-  useEffect(()=>{
-    const docRef = doc(db, "productos", id);
-    getDocs(docRef)
-    .then((resp) => {
-      setItem(
-        {...resp.metadata(), id: resp.id}
-      )
-    })
-
-
-  },[id])
+  const {id} = useParams();
   
-  
-  
+  const{document:producto} = useGetDocumentById("productos", id);
+
+  console.log(producto, id);
+
+   if (!producto){
+
+    return <div>loading
+
+    </div>
+   }
+
+ 
   
   return( 
       <div>

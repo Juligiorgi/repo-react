@@ -1,24 +1,58 @@
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import {ItemListContainer} from './components/ItemListContainer/ItemListContainer';
 import {NavBar} from './components/Navbar/Navbar';
 import {ItemDetailContainer} from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
-import {CartContext} from './CartContext/CartContext';
+import {Checkout} from "./components/Checkout/Checkout";
+import { collection, getDocs, getFirestore, query, } from 'firebase/firestore';
+import { CartProvider } from './CartContext/CartContext';
+import { useEffect, useState } from 'react';
+import app from './Firebase/config';
+import {Carrito} from "./components/Carrito/Carrito"
 
-function App() {
+export function App() {
+  const [productos, setProduto] = useState([]);
+  useEffect(() => {
+    const db = getFirestore(app);
+
+    const productoCollection = collection(db, "productos");
+
+    const q = query(productoCollection);
+
+    getDocs(q).then((snapshot) => {
+      console.log("entra al then");
+      if (snapshot.size > 0) {
+        const producto = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          }
+        });
+        console.log(producto);
+        setProduto(producto);
+      }
+    })
+
+  }, [])
+
+  if (!productos) {
+    return <div>loading...</div>;
+  } 
 
 
   return (
     <div>
-      <CartContext.Provider>
+      <CartProvider>
        <BrowserRouter> 
       <NavBar/>
       <Routes>
         <Route path='/' element={<ItemListContainer/>}/>
-        <Route path='/categoria/:categoriaId'/>
+        <Route path='/categoria/:categoriaId' element={<ItemListContainer/>}/>
         <Route path='/item:id' element={<ItemDetailContainer/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path='/carrito' element={<Carrito/>}/>
       </Routes>
       </BrowserRouter>
-      </CartContext.Provider>
+      </CartProvider>
     </div>
   );
 }
