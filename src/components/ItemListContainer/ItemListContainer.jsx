@@ -5,13 +5,15 @@ import { useParams } from "react-router-dom";
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 
+
 export const ItemListContainer=()=>{
   const [productos, setProduto] = useState([]);
-  const { categoriaId } = useParams();
+  const { categoria } = useParams();
 useEffect(() => {
+
 const db = getFirestore();
 const productoCollection = collection(db, "productos");
-const q = categoriaId ? query(productoCollection, where("categoria", "==", categoriaId)) : productoCollection;
+const q = categoria ? query(productoCollection, where("categoria", "==", categoria)) : productoCollection;
 
 getDocs(q).then((snapshot) => {
 
@@ -31,7 +33,7 @@ getDocs(q).then((snapshot) => {
  }
 })
 
-}, [categoriaId])
+}, [categoria])
 
 if (!productos) {
 
